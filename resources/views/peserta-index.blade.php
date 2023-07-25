@@ -16,8 +16,8 @@
                             <tr>
                                 <th>NO</th>
                                 <th>NAMA</th>
-                                <th>POSISI</th>
                                 <th>NIP</th>
+                                <th>POSISI</th>
                                 <th>SATUAN KERJA</th>
                                 <th>OPSI</th>
                             </tr>
@@ -26,13 +26,12 @@
                             @foreach ($data_peserta as $peserta)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $peserta->nama }}</td>
-                                    <td>{{ $peserta->nip }}</td>
-                                    <td>{{ $peserta->posisi_yang_dipilih }}</td>
-                                    <td>{{ $peserta->satuan_kerja }}</td>
+                                    <td>{{ htmlspecialchars($peserta->nama) }}</td>
+                                    <td>{{ htmlspecialchars($peserta->nip) }}</td>
+                                    <td>{{ htmlspecialchars($peserta->posisi_yang_dipilih) }}</td>
+                                    <td>{{ htmlspecialchars($peserta->satuan_kerja) }}</td>
                                     <td>
-                                        <a href="#" class="btn btn-primary shadow btn-xs sharp mb-1">detail</a>
-                                        <a href="#" class="btn btn-secondary shadow btn-xs sharp mb-1">dokumen</a>
+                                        <a type="button" href="{{ route('daftar-peserta.show', $peserta->id) }}" class="btn btn-primary shadow btn-xs sharp mb-1">detail</a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -41,7 +40,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 </section>
 @endsection

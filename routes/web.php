@@ -13,3 +13,4 @@
 
 Route::get('/', 'HomeController@home')->name('home');
 Route::get('/daftar-peserta', 'HomeController@daftarPeserta')->name('daftar-peserta');
+Route::get('/daftar-peserta/{pesertaId}/show', 'HomeController@daftarPesertaShow')->name('daftar-peserta.show');
