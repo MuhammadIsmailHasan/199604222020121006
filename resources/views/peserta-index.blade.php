@@ -1,5 +1,7 @@
 @extends('layout')
 
+@section('title', 'Daftar peserta')
+
 @section('content')
 <section id="dashboard" class="services ">
     <div class="container">

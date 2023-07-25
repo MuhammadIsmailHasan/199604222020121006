@@ -11,7 +11,32 @@ class HomeController extends Controller
 
     public function home() 
     {
-        return view('home');
+        $peserta = $this->filterAll();
+
+        $programmer = array_filter($peserta, function($item) {
+            return $item->posisi_yang_dipilih == 'Programmer';
+        });
+        $SA = array_filter($peserta, function($item) {
+            return $item->posisi_yang_dipilih == 'System / Business Analyst';
+        });
+        $DA = array_filter($peserta, function($item) {
+            return $item->posisi_yang_dipilih == 'Database Administrator';
+        });
+        $QA = array_filter($peserta, function($item) {
+            return $item->posisi_yang_dipilih == 'Quality Assurance';
+        });
+        $TW = array_filter($peserta, function($item) {
+            return $item->posisi_yang_dipilih == 'Technical Writer';
+        });
+        
+        return view('home', [
+            'programmer' => count($programmer),
+            'sa' => count($SA),
+            'da' => count($DA),
+            'tw' => count($TW),
+            'qa' => count($QA),
+            'is_home' => 'active'
+        ]);
     }
 
     public function daftarPeserta()

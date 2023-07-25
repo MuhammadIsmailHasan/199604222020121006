@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Mahkamah Agung RI | Dashboard</title>
+    <title>@yield('title') | Mahkamah Agung RI</title>
     <meta content="Mahkamah Agung RI" name="description">
     <meta content="Mahkamah Agung RI" name="keywords">
 
@@ -39,7 +39,7 @@
 
         <nav id="navbar" class="navbar">
             <ul>
-                <li><a class="active" href="{{ route('home') }}">Home</a></li>
+                <li><a class="{{ $is_home ?? '' }}" href="{{ route('home') }}">Home</a></li>
 
                 <li><a class="getstarted" href="{{ route('daftar-peserta') }}">Daftar Peserta</a></li>
             </ul>
@@ -63,7 +63,7 @@
             <div class="copyright">
                 &copy; Copyright <strong><span>Mahkamah Agung RI</span></strong>. All Rights Reserved
             </div>
-            <div class="credits">Develop by <a href="http://www.web.pa-ngawi.go.id/en/">Muhammad Ismail Hasan</a>
+            <div class="credits">Develop by <a href="http://www.web.pa-ngawi.go.id/en/" target="_blank">Muhammad Ismail Hasan</a>
             </div>
         </div>
     </footer>
@@ -80,7 +80,6 @@
     <script src="{{ asset('assets/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/waypoints/noframework.waypoints.js') }}"></script>
-    <script src="{{ asset('assets/vendor/php-email-form/validate.js') }}"></script>
 
     <!-- Template Main JS File -->
     <script src="{{ asset('assets/js/main.js') }}"></script>

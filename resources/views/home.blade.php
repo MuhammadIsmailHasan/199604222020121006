@@ -1,5 +1,7 @@
 @extends('layout')
 
+@section('title', 'Home')
+
 @section('header')
 <section id="hero">
     <div class="hero-container" data-aos="fade-up">
@@ -15,39 +17,43 @@
     <div class="container">
         <div class="row justify-content-end">
             <div class="col-lg-11">
-                <div class="row justify-content-end">
+                <div class="row justify-content-center">
 
-                <div class="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch">
-                    <div class="count-box py-5">
-                    <i class="bi bi-emoji-smile"></i>
-                    <span data-purecounter-start="0" data-purecounter-end="65" class="purecounter">0</span>
-                    <p>Happy Clients</p>
+                    <div class="col-lg-4 col-md-5 col-6 d-md-flex align-items-md-stretch">
+                        <div class="count-box py-5">
+                            <i class="bi bi-github"></i>
+                            <span data-purecounter-start="0" data-purecounter-end="{{ $programmer }}" class="purecounter">0</span>
+                            <p>Programmer</p>
+                        </div>
                     </div>
-                </div>
-
-                <div class="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch">
-                    <div class="count-box py-5">
-                    <i class="bi bi-journal-richtext"></i>
-                    <span data-purecounter-start="0" data-purecounter-end="85" class="purecounter">0</span>
-                    <p>Projects</p>
+                    <div class="col-lg-4 col-md-5 col-6 d-md-flex align-items-md-stretch">
+                        <div class="count-box py-5">
+                            <i class="bi bi-globe"></i>
+                            <span data-purecounter-start="0" data-purecounter-end="{{ $sa }}" class="purecounter">0</span>
+                            <p>System / Business Analyst</p>
+                        </div>
                     </div>
-                </div>
-
-                <div class="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch">
-                    <div class="count-box pb-5 pt-0 pt-lg-5">
-                    <i class="bi bi-clock"></i>
-                    <span data-purecounter-start="0" data-purecounter-end="27" class="purecounter">0</span>
-                    <p>Years of experience</p>
+                    <div class="col-lg-4 col-md-5 col-6 d-md-flex align-items-md-stretch">
+                        <div class="count-box py-5">
+                            <i class="bi bi-hdd-rack"></i>
+                            <span data-purecounter-start="0" data-purecounter-end="{{ $da }}" class="purecounter">0</span>
+                            <p>Database Administrator</p>
+                        </div>
                     </div>
-                </div>
-
-                <div class="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch">
-                    <div class="count-box pb-5 pt-0 pt-lg-5">
-                    <i class="bi bi-award"></i>
-                    <span data-purecounter-start="0" data-purecounter-end="22" class="purecounter">0</span>
-                    <p>Awards</p>
+                    <div class="col-lg-4 col-md-5 col-6 d-md-flex align-items-md-stretch">
+                        <div class="count-box py-5">
+                            <i class="bi bi-laptop"></i>
+                            <span data-purecounter-start="0" data-purecounter-end="{{ $qa }}" class="purecounter">0</span>
+                            <p>Quality Assurance</p>
+                        </div>
                     </div>
-                </div>
+                    <div class="col-lg-4 col-md-5 col-6 d-md-flex align-items-md-stretch">
+                        <div class="count-box py-5">
+                            <i class="bi bi-journal-check"></i>
+                            <span data-purecounter-start="0" data-purecounter-end="{{ $tw }}" class="purecounter">0</span>
+                            <p>Technical Writer</p>
+                        </div>
+                    </div>
 
                 </div>
             </div>
@@ -63,23 +69,46 @@
         </div>
 
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <div class="icon-box" data-aos="fade-up">
-                <div class="icon"><i class="bi bi-briefcase" style="color: #ff689b;"></i></div>
-                <h4 class="title"><a href="">Lorem Ipsum</a></h4>
-                <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="icon-box" data-aos="fade-up">
-                <div class="icon"><i class="bi bi-book" style="color: #e9bf06;"></i></div>
-                <h4 class="title"><a href="">Dolor Sitema</a></h4>
-                <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata</p>
+                    <div id="chartContainer" style="height: 300px; width: 100%;">
+                    </div>
                 </div>
             </div>
         </div>
 
     </div>
 </section>
+@endsection
+
+@section('js')
+    <script type="text/javascript" src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>  
+    <script type="text/javascript" src="https://cdn.canvasjs.com/jquery.canvasjs.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            let options = {
+                title: {
+                    text: "Data peserta berdasarkan posisi"
+                },
+                data: [{
+                        type: "pie",
+                        startAngle: 45,
+                        showInLegend: "true",
+                        legendText: "{label}",
+                        indexLabel: "{label} ({y})",
+                        yValueFormatString:"#,##0.#"%"",
+                        dataPoints: [
+                            { label: "Programmer", y: {{ $programmer }} },
+                            { label: "System / Business Analyst", y: {{ $sa }} },
+                            { label: "Database Administrator", y: {{ $da }} },
+                            { label: "Quality Assurance", y: {{ $qa }} },
+                            { label: "Technical Writer", y: {{ $tw }} }
+                        ]
+                }]
+            };
+            $("#chartContainer").CanvasJSChart(options);
+        });
+    </script>
 @endsection
 

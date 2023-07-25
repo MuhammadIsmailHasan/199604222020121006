@@ -1,5 +1,7 @@
 @extends('layout')
 
+@section('title', 'Detail peserta')
+
 @section('content')
 <section id="dashboard" class="services ">
     <div class="container">
@@ -57,7 +59,7 @@
                             @foreach ($peserta->nilai as $item)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ htmlspecialchars($item->jenis_attr) }}</td>
+                                    <td>{{ config('formview.jenis_tes.' . $item->jenis_attr . '.label' ) }}</td>
                                     <td>
                                         @if ($item->jenis_attr == 'url_file')
                                             <a href="{{ $item->value }}" target="_blank" rel="Link pdf">klik untuk melihat dokumen</a>
