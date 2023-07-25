@@ -48,8 +48,9 @@
 
 @section('js')
 <script>
-
-    
+    $(document).ready(function() {
+        $('#peserta_table').DataTable();
+    });
 </script>
 @endsection
 
